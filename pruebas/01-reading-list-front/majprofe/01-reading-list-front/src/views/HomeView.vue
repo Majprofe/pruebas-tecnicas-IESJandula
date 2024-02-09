@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import Books from '@/components/Books.vue';
-import FavoritesBooks from '@/components/FavoritesBooks.vue';
-import { computed, ref, watch, watchEffect } from 'vue'
+import Books from '@/components/Books.vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import type { Ref } from 'vue'
 import data from '../books.json'
 import type { Book } from '@/types/types'
@@ -72,6 +71,20 @@ watch(() => localStorage.getItem('booksList'), (newValue) => {
   booksList.value = JSON.parse(newValue || '[]')
 })
 
+// Inicializar los datos desde el localStorage al cargar la página
+onMounted(() => {
+  const storedBooksList = localStorage.getItem('booksList');
+  const storedReadList = localStorage.getItem('readList');
+
+  if (storedBooksList) {
+    booksList.value = JSON.parse(storedBooksList);
+  }
+
+  if (storedReadList) {
+    readList.value = JSON.parse(storedReadList);
+  }
+});
+
 
 // Escuchar cambios en el LocalStorage en todas las pestañas
 window.addEventListener('storage', (event) => {
@@ -93,9 +106,9 @@ window.addEventListener('storage', (event) => {
       </select>
       <h3 class="font-bold text-4xl">Favoritos:</h3>
     </nav>
-    <section class="grid grid-cols-2 gap-4 w-auto">
+    <section class="grid grid-cols-2 gap-10 w-auto">
       <Books :books="booksList" @book-click="handleBookClick" />
-      <FavoritesBooks :books="readList" @book-click="handleBookClick" />
+      <Books :books="readList" @book-click="handleBookClick" />
     </section>
   </article>
 </template>

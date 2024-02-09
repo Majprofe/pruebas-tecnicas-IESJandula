@@ -14,7 +14,7 @@ const handleBookClick = (book: string) => {
 
 <template>
     <article class="">
-        <ul class="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-4">
+        <ul class="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-2">
             <li v-for="book in books" :key="book.ISBN" class="grid gap-2" @click="handleBookClick(book.ISBN)">
                 <img class="aspect-[9/14] object-cover" :src="book.cover" :alt="book.title">
                 <p>
