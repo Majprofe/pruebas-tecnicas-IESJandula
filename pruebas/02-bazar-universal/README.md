@@ -6,7 +6,9 @@
 ¿Cómo puedo participar?
 
 1.- Haz un fork de este repositorio
+
 2.- Crea una carpeta con tu nombre de usuario de GitHub dentro de la carpeta pruebas/[nombre-de-la-prueba], por ejemplo: pruebas/02-bazar-universal/usuarioGithub.
+
 3.- Siempre sólo modifica los ficheros y carpetas dentro de tu carpeta, de otra manera, tu pull request será rechazada. Nunca formatees o modifiques el código de otros participantes.
 
 - Basada en la prueba real usada en **Mercado Libre.**
