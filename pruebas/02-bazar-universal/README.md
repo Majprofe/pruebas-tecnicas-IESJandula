@@ -2,7 +2,7 @@
 
 <small>
 
-  Info:
+##  Info:
 ¿Cómo puedo participar?
 
 1.- Haz un fork de este repositorio
