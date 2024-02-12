@@ -35,6 +35,8 @@ Ten en cuenta:
 
 ## Requisitos
 
+- La aplicación debe estar hecha con Typescript.
+
 ### Funcionalidad
 
 1. **Crea las 3 páginas**: Inicio con caja de búsqueda, resultados de búsqueda y detalle.
