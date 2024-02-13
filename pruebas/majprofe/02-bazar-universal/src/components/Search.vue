@@ -9,7 +9,8 @@
             </div>
         </section>
         <section>
-            <p>Resultados de búsqueda de {{ search }}</p>
+          <span class="bg-pink-200 p-1">📱 categoria</span>
+          <p>Resultados de búsqueda de {{ search }}</p>
 
         </section>
 
