@@ -2,7 +2,6 @@
 
 El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
 
-- [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
 
 ## ¿Cómo puedo participar?
 
