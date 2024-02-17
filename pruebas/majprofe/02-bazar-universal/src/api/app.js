@@ -2,10 +2,10 @@ import express from 'express';
 import fs from 'fs';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 
 const app = express();
 const port = 3000;
-
 // Middleware para manejar errores
 const errorHandler = (err, req, res, next) => {
     console.error(err.stack);
@@ -51,7 +51,10 @@ app.get('/items', (req, res, next) => {
         const products = JSON.parse(data);
         // Filtrar productos por la consulta
         const filteredProducts = products.products.filter(product =>
-            product.title.toLowerCase().includes(query.toLowerCase())
+            product.title.toLowerCase().includes(query.toLowerCase()) ||
+            product.description.toLowerCase().includes(query.toLowerCase()) ||
+            product.brand.toLowerCase().includes(query.toLowerCase()) ||
+            product.category.toLowerCase().includes(query.toLowerCase())
         );
         res.json(filteredProducts);
     });
@@ -98,6 +101,9 @@ app.get('/item/:id', (req, res, next) => {
         res.json(product);
     });
 });
+
+// Habilitar CORS
+app.use(cors());
 
 // Middleware para manejar errores
 app.use(errorHandler);
