@@ -13,15 +13,27 @@
             </form>
 
         </section>
-        <section class="flex flex-col items-center m-4">
-          <span v-for="categoria in categorias" :key="categoria.nombre" class="p1" :class="categoria.color">{{ categoria.icono }} {{ categoria.nombre }}</span>
-          <p>Resultados de búsqueda de "{{ search }}": {{ productos.length }}</p>
+        <section class="flex flex-col items-start m-4">
+          <p class="text-gray-600 font-bold">Resultados de búsqueda de "{{ search }}": {{ productos.length }}</p>
+          <span v-for="categoria in categorias" :key="categoria.nombre" class="m-2 mb-4" :class="categoria.color">{{ categoria.icono }} {{ categoria.nombre }}</span>
           <ul>
-            <li v-for="producto in productos" :key="producto.id">
-              <img :src="producto.thumbnail" :alt="producto.title">
-              <h3>{{ producto.title }}</h3>
-              <p>{{ producto.description }}</p>
-              <p>{{ producto.price }}</p>
+            <li @click="mostrarInfo(producto.id)" class="flex max-w-xl p-2" v-for="producto in productos" :key="producto.id">
+              <img class="rounded-full h-20 w-20 min-w-20" :src="producto.thumbnail" :alt="producto.title">
+              <div class="ml-5">
+               <h3 class="font-bold text-xl">{{ producto.title }}</h3>
+               <p>{{ producto.description }}</p>
+               <div class="flex">
+                <p class="mr-4 font-bold text-xl">{{ producto.price }}$</p>
+                <span v-for="(index, i) in Math.floor(producto.rating)" :key="i">
+                 <img class="h-4" src="/estrella.png" alt="">
+                </span>
+                <!-- Mostrar media estrella si la puntuación tiene parte decimal -->
+                <span v-if="producto.rating % 1 !== 0">
+                  <img class="h-4" src="/mediaestrella.png" alt="">
+                </span>
+               </div>
+              </div>
+
             </li>
           </ul>
 
@@ -33,11 +45,12 @@
 <script setup lang="ts">
 import caravana from '/caravan.svg'
 import { ref, onMounted, computed } from 'vue';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { Producto, Categoria } from '../types/types'
 
 const route: RouteLocationNormalizedLoaded = useRoute()
+const router = useRouter()
 const search: { value: string } = ref('')
 const productos = ref<Producto[]>([]);
 
@@ -113,6 +126,12 @@ const categorias = computed (()=>{
 
   return categoriasPresentes
 })
+
+const mostrarInfo = (productoId: number) => {
+  console.log(productoId)
+  // Navegar a la vista de resultados de búsqueda y pasar el texto de búsqueda como parámetro
+  router.push({ path: '/info', query: { id: productoId.toString() } });
+}
 </script>
 
 <style focus>
