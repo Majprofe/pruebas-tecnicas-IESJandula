@@ -11,7 +11,6 @@
                 <input v-model="search" placeholder="Search" type="text" class="input w-full h-10 leading-10 px-4 pl-10 border-2 border-transparent rounded-md outline-none bg-gray-200 text-gray-800 transition duration-300 ease-in-out">
               </div>
             </form>
-
         </section>
         <section class="flex flex-col items-start m-4">
           <p class="text-gray-600 font-bold">Resultados de búsqueda de "{{ search }}": {{ productos.length }}</p>
