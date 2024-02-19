@@ -95,13 +95,11 @@ const categoriasTipos: Categoria[] = [
 
 const searchProducts = async () => {
   try{
-    console.log(search.value)
     const response = await fetch(`https://api-bazar-universal-r5ng.onrender.com/items/?q=${search.value}`)
     if (!response.ok) {
       throw new Error('Network response was not ok')
     }
     const data = await response.json()
-    console.log(data)
     productos.value = data
   } catch (error) {
     console.error(error)
@@ -128,7 +126,6 @@ const categorias = computed (()=>{
 })
 
 const mostrarInfo = (productoId: number) => {
-  console.log(productoId)
   // Navegar a la vista de resultados de búsqueda y pasar el texto de búsqueda como parámetro
   router.push({ path: '/info', query: { id: productoId.toString() } });
 }
