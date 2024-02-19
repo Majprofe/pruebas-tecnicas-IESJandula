@@ -75,7 +75,6 @@ const searchProduct = async () => {
         }
         const data = await response.json()
         producto.value = data
-        console.log(producto.value)
     } catch (error) {
         console.error(error)
     }
