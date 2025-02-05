@@ -3,7 +3,5 @@ import Inicio from '../components/Inicio.vue'
 </script>
 
 <template>
-  <main>
-    <Inicio />
-  </main>
+  <Inicio />
 </template>
